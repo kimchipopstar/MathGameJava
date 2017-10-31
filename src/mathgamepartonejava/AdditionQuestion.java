@@ -4,11 +4,24 @@
  * and open the template in the editor.
  */
 package mathgamepartonejava;
-
+import java.util.Random;
 /**
  *
  * @author j.k.
  */
 public class AdditionQuestion {
-    string question;
+    private final String question;
+    private final int answer;
+    
+    public AdditionQuestion() {
+        Random randomValue = new Random();
+        int leftValue = randomValue.nextInt(10) + 1;
+        int rightValue = randomValue.nextInt(10) + 1;
+        question = leftValue + " + " + rightValue;
+        answer = leftValue + rightValue;
+    }
+    
+    public String getQuestion() {
+        return question;
+    }
 }
