@@ -24,4 +24,8 @@ public class AdditionQuestion {
     public String getQuestion() {
         return question;
     }
+    
+    public int getAnswer() {
+        return answer;
+    }
 }

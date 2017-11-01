@@ -15,15 +15,33 @@ public class MathGamePartOneJava {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        
+        ScoreKeeper scoreKeeper = new ScoreKeeper();
         Scanner userInput = new Scanner(System.in);
-        int userAnswer;
-        while (true) {
-            
+        String userAnswer;
+        boolean gameOn = true;
+
+        while (gameOn) {
             AdditionQuestion addition = new AdditionQuestion();
             System.out.println(addition.getQuestion());
-            userAnswer = userInput.nextInt();
+            userAnswer = userInput.nextLine();
+            try {
+               if (userAnswer.equals("quit")) {
+                    gameOn = false;
+                } else if (Integer.parseInt(userAnswer) == addition.getAnswer()) {
+                    System.out.println("Right!");
+                    scoreKeeper.setRight(scoreKeeper.getRight()+ 1);
+
+                } else {
+                    System.out.println("Wrong!");
+                    scoreKeeper.setWrong(scoreKeeper.getWrong()+ 1);
+                }  
+            } catch (NumberFormatException error) {
+                System.out.print(error.getMessage());
+                System.out.println("To quit enter 'quit'");
+            } 
             
-            
+            scoreKeeper.trackScore();
         }
     }
     
