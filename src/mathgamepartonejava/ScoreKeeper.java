@@ -17,8 +17,17 @@ public class ScoreKeeper {
     public void trackScore() {
         int numberOfQuestions = right + wrong;
         int percentage;
+        // if it's 0, it's undefined.
         percentage = right * 100 / numberOfQuestions;
         System.out.println("Score: " + right + " right, " + wrong + " wrong --- " + percentage + "%");
+    }
+    
+    public void incrementRight() {
+        right ++;
+    }
+    
+    public void incrementWrong() {
+        wrong ++;
     }
     
     public void setRight(int right) {

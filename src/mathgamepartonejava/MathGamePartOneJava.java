@@ -15,33 +15,40 @@ public class MathGamePartOneJava {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+//        double startTime = System.currentTimeMillis() / 1000.0;
         
+        QuestionManager questionManager = new QuestionManager();
         ScoreKeeper scoreKeeper = new ScoreKeeper();
         Scanner userInput = new Scanner(System.in);
         String userAnswer;
         boolean gameOn = true;
-
         while (gameOn) {
+
             AdditionQuestion addition = new AdditionQuestion();
+            questionManager.addQuestion(addition);
             System.out.println(addition.getQuestion());
             userAnswer = userInput.nextLine();
+            int answer = addition.getAnswer();
             try {
                if (userAnswer.equals("quit")) {
                     gameOn = false;
-                } else if (Integer.parseInt(userAnswer) == addition.getAnswer()) {
+                } else if (Integer.parseInt(userAnswer) == answer) {
                     System.out.println("Right!");
-                    scoreKeeper.setRight(scoreKeeper.getRight()+ 1);
-
+                    scoreKeeper.incrementRight();
                 } else {
                     System.out.println("Wrong!");
-                    scoreKeeper.setWrong(scoreKeeper.getWrong()+ 1);
+                    scoreKeeper.incrementWrong();
                 }  
             } catch (NumberFormatException error) {
                 System.out.print(error.getMessage());
                 System.out.println("To quit enter 'quit'");
             } 
-            
-            scoreKeeper.trackScore();
+            if(gameOn){
+                scoreKeeper.trackScore();
+                questionManager.updateTotalTime(addition.getTotalTime());
+//                System.out.println("time taken: " + addition.getTotalTime() + "total time: " + questionManager.getTotalTime() + " average time: " + questionManager.averageTime());
+                System.out.println(questionManager.totalTimeAndAverMessage());
+            }
         }
     }
     
