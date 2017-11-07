@@ -4,39 +4,18 @@
  * and open the template in the editor.
  */
 package mathgamepartonejava;
-import java.util.Random;
+
 
 /**
  *
  * @author j.k.
  */
-public class AdditionQuestion {
-    private final String question;
-    private final int answer;
-    private double startTime;
-    private double endTime;
-
+public class AdditionQuestion extends Question {
     
-    public AdditionQuestion() {
-        Random randomValue = new Random();
-        int leftValue = randomValue.nextInt(10) + 1;
-        int rightValue = randomValue.nextInt(10) + 1;
-        question = leftValue + " + " + rightValue;
+    @Override
+    public void generateQuestion (){
+        question = String.format("%i + %i", leftValue, rightValue);
         answer = leftValue + rightValue;
-        startTime = System.currentTimeMillis();
     }
-    
-    public double getTotalTime() {
-        return (endTime - startTime)/ 1000.0;
-    }
-    
 
-    public String getQuestion() {
-        return question;
-    }
-    
-    public int getAnswer() {
-        endTime = System.currentTimeMillis();
-        return answer;
-    }
 }
