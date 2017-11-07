@@ -23,7 +23,7 @@ public class MathGamePartOneJava {
         String userAnswer;
         boolean gameOn = true;
         while (gameOn) {
-
+        		System.out.println(Math.random(2));
             AdditionQuestion addition = new AdditionQuestion();
             questionManager.addQuestion(addition);
             System.out.println(addition.getQuestion());

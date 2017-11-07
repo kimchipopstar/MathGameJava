@@ -32,17 +32,25 @@ public class Question {
         return (endTime - startTime)/ 1000.0;
     }
     
-    public int getLeftVavue() {
+    public int getLeftValue() {
     		return leftValue;
     }
     
-    public int getRightVavue() {
+    public int getRightValue() {
 		return rightValue;
-}
+    }
+    
+    public void setAnswer(int answer) {
+    		this.answer = answer;
+    }
     
 
     public String getQuestion() {
         return question;
+    }
+    
+    public void setQuestion(String question) {
+    		this.question = question;
     }
     
     public int getAnswer() {

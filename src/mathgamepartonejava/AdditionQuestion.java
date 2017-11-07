@@ -14,8 +14,8 @@ public class AdditionQuestion extends Question {
     
     @Override
     public void generateQuestion (){
-        question = String.format("%i + %i", leftValue, rightValue);
-        answer = leftValue + rightValue;
+        setQuestion(String.format("%i + %i", getLeftValue(), getRightValue()));
+        setAnswer(getLeftValue() + getRightValue());
     }
 
 }
