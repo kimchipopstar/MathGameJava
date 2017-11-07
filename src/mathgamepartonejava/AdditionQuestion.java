@@ -12,10 +12,12 @@ package mathgamepartonejava;
  */
 public class AdditionQuestion extends Question {
     
+	public AdditionQuestion() {
+		generateQuestion();
+	}
     @Override
     public void generateQuestion (){
-        setQuestion(String.format("%i + %i", getLeftValue(), getRightValue()));
+        setQuestion(String.format("%d + %d", getLeftValue(), getRightValue()));
         setAnswer(getLeftValue() + getRightValue());
     }
-
 }

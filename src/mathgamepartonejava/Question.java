@@ -13,7 +13,7 @@ import java.util.Random;
 public class Question {
     
     private String question;
-    private int answer;
+    private double answer;
     private double startTime;
     private double endTime;
     private int leftValue;
@@ -23,8 +23,8 @@ public class Question {
         Random randomValue = new Random();
         leftValue = randomValue.nextInt(10) + 1;
         rightValue = randomValue.nextInt(10) + 1;
-        question = leftValue + " + " + rightValue;
-        answer = leftValue + rightValue;
+//        question = leftValue + " + " + rightValue;
+//        answer = leftValue + rightValue;
         startTime = System.currentTimeMillis();
     }
     
@@ -40,9 +40,7 @@ public class Question {
 		return rightValue;
     }
     
-    public void setAnswer(int answer) {
-    		this.answer = answer;
-    }
+    
     
 
     public String getQuestion() {
@@ -53,10 +51,14 @@ public class Question {
     		this.question = question;
     }
     
-    public int getAnswer() {
+    public double getAnswer() {
         endTime = System.currentTimeMillis();
         return answer;
     }
+    
+    public void setAnswer(double answer) {
+		this.answer = answer;
+}
     
     public void generateQuestion() {
         

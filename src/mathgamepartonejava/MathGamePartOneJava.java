@@ -14,25 +14,24 @@ public class MathGamePartOneJava {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-//        double startTime = System.currentTimeMillis() / 1000.0;
-        
+    public static void main(String[] args) {        
         QuestionManager questionManager = new QuestionManager();
+        QuestionFactory questionFactory = new QuestionFactory();
         ScoreKeeper scoreKeeper = new ScoreKeeper();
         Scanner userInput = new Scanner(System.in);
         String userAnswer;
         boolean gameOn = true;
         while (gameOn) {
-        		System.out.println(Math.random(2));
-            AdditionQuestion addition = new AdditionQuestion();
-            questionManager.addQuestion(addition);
-            System.out.println(addition.getQuestion());
+            Question question = questionFactory.generateRandomQuestion();
+            questionManager.addQuestion(question);
+            System.out.println(question.getQuestion());
             userAnswer = userInput.nextLine();
-            int answer = addition.getAnswer();
+            double answer = question.getAnswer();
+            System.out.println(Math.round(answer*100)/100.0);
             try {
                if (userAnswer.equals("quit")) {
                     gameOn = false;
-                } else if (Integer.parseInt(userAnswer) == answer) {
+                } else if (Double.parseDouble(userAnswer) == Math.round(answer*100)/100.0) {
                     System.out.println("Right!");
                     scoreKeeper.incrementRight();
                 } else {
@@ -45,11 +44,9 @@ public class MathGamePartOneJava {
             } 
             if(gameOn){
                 scoreKeeper.trackScore();
-                questionManager.updateTotalTime(addition.getTotalTime());
-//                System.out.println("time taken: " + addition.getTotalTime() + "total time: " + questionManager.getTotalTime() + " average time: " + questionManager.averageTime());
+                questionManager.updateTotalTime(question.getTotalTime());
                 System.out.println(questionManager.totalTimeAndAverMessage());
             }
         }
-    }
-    
+    }   
 }

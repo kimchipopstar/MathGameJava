@@ -12,11 +12,11 @@ import java.util.ArrayList;
  */
 public class QuestionManager {
     
-    private ArrayList<AdditionQuestion> questions = new ArrayList<AdditionQuestion>();
+    private ArrayList<Question> questions = new ArrayList<Question>();
     private double totalTime;
   
-    public void addQuestion (AdditionQuestion additionQuestion) {
-        this.questions.add(additionQuestion);
+    public void addQuestion (Question question) {
+        this.questions.add(question);
     }
     
     public void updateTotalTime(double time) {
